@@ -97,7 +97,7 @@ function init_alphabet() {
         [14, 17, 16, 23, 17, 17, 14, 0],
         [17, 17, 17, 31, 17, 17, 17, 0],
         [14, 4, 4, 4, 4, 4, 14, 0],
-        [15, 2, 2, 2, 2, 18, 12, 0],
+        [31, 1, 1, 1, 1, 17, 14, 0], //J
         [17, 18, 20, 24, 20, 18, 17, 0], //K
         [16, 16, 16, 16, 16, 16, 31, 0],
         [17, 27, 21, 21, 17, 17, 17, 0],
@@ -202,7 +202,7 @@ let strip_helligkeit = 0
 let arr_tech_matrix: number[] = []
 let strip: neopixel.Strip = null
 // #########################################
-let myText:string = "ABCDIJKLÖfgj";
+let myText:string = "würfelbox";
 strip = neopixel.create(DigitalPin.P0,  56 * myText.length, NeoPixelMode.RGB)
 // #########################################
 // auch  scrollspeed
@@ -213,7 +213,7 @@ let shift: number = 0
 
 basic.showIcon(IconNames.SmallSquare)
 arr_tech_matrix = [8, 8]
-strip_helligkeit = 50
+strip_helligkeit = 100
 let strip_pause = 250
 // strip.showColor(neopixel.colors(NeoPixelColors.Green))
 // strip.show()
