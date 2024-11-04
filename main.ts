@@ -4,7 +4,7 @@ function neop_schreibe_zch(zch_str: string = "A", color: number) {
 
     let mx2 = arr_tech_matrix[0];
     let my2 = zch_str.length;
-    arr_tech_matrix[1] = my2 * 5;
+    // arr_tech_matrix[1] = my2 * 7;
 
     // strip.showRainbow(1, 360)
 
@@ -62,16 +62,16 @@ function neop_schreibe_zch(zch_str: string = "A", color: number) {
                 }
             }
         })
-        strip.show()
+        // strip.show()
         // arr_neop_strips[sss].show();
+
+        strip.show();
+
         if (is_type2 == 1) {
             pause(strip_pause)
             // basic.showString(zch2)
         }
-
         strip.rotate(8 * 7);
-        strip.show();
-
         // strip.rotate(0);
         // strip.show();
     }
@@ -201,7 +201,10 @@ let pixelAnzahl = 0
 let strip_helligkeit = 0
 let arr_tech_matrix: number[] = []
 let strip: neopixel.Strip = null
-strip = neopixel.create(DigitalPin.P0, 168, NeoPixelMode.RGB)
+// #########################################
+let myText:string = "ABCDIJKLÖfgj";
+strip = neopixel.create(DigitalPin.P0,  56 * myText.length, NeoPixelMode.RGB)
+// #########################################
 // auch  scrollspeed
 let automat = false
 automat=true;
@@ -230,7 +233,7 @@ strip.setPixelColor(16, neopixel.colors(NeoPixelColors.Red))
 strip.setPixelColor(17, neopixel.colors(NeoPixelColors.Red))
 
 
-neop_schreibe_zch("ABC", NeoPixelColors.Red)
+neop_schreibe_zch(myText, NeoPixelColors.Red)
 
 
 // strip.showRainbow(1, 360)
