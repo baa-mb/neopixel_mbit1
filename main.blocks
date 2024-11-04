@@ -1,1 +1,238 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="*S+6RbU}pCv8KZ_6lor@">strip</variable></variables><block type="pxt-on-start" id="z`_${VHf5.AEJdHIF=N-" x="0" y="0"><statement name="HANDLER"><block type="neopixel_set_strip_color" id="(D.{=_hj#0o.f=/0!a7@"><value name="strip"><block type="variables_get" id="q)a:!u[8$U,b1s!Fg+mh"><field name="VAR" id="*S+6RbU}pCv8KZ_6lor@">strip</field></block></value><value name="rgb"><shadow type="neopixel_colors" id="`TNeH|ucKi=j2!yD-$0W"><field name="color">NeoPixelColors.Red</field></shadow></value></block></statement></block><block type="device_forever" id="Qg^.W;$uO7Pwx0Zz2SJg" x="205" y="0"></block></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="@_/jI@hXrUgBDnpDj?Aj">pixelAnzahl</variable><variable id="JwP}`q4v3qwgb:l:Y;X~">arr_tech_matrix</variable><variable id="COT(0TTdw4XS!RwJi;K8">strip</variable><variable id="ekjZSgkSaX0ez[jjy9YV">strip_helligkeit</variable><variable id="P.bv+:aw!@rbWr+p+E6h">automat</variable><variable id="sr3Y={k_CYyvdijX]yKc">bst_reihe</variable><variable id="_.^[|GxNexxqtoc4U(K@">strip_pause</variable></variables><comment id="#{)U4$Det2qE~T_HMOsp" x="291" y="991" w="480" h="160">
+strip.clear()
+strip.setBrightness(64)
+strip.showColor(neopixel.colors(NeoPixelColors.Red))
+strip.show()
+</comment><comment id="Ib}Fr:oO^8x~+;[TX%T;" x="-19" y="1234" w="160" h="120">
+init_alphabet();
+init_strip();
+</comment><comment id="Z@nWKi@K@=SiPN~bI.GY" x="186" y="1234" w="260" h="120">
+function init_alphabet() {
+</comment><comment id="N!O-#Y9`U1F{ncq}|vCv" x="491" y="1234" w="480" h="120">
+bst_reihe = " ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜäöü0123456789!?.,*+-=≠:%abcdefghijklmnopqrstuvwxyz()&lt;&gt;";
+</comment><comment id="`]Q`#/.2~Vi9Wc`9Lqsn" x="-19" y="1399" w="160" h="120">
+arr_zeichen = [
+</comment><comment id="QO)-3,fu0BNcdk!vTuHy" x="186" y="1399" w="250" h="120">
+[0, 0, 0, 0, 0, 0, 0, 0],
+</comment><comment id="*)3c?0ghpoLatxMhFLH$" x="481" y="1399" w="360" h="120">
+[14, 17, 17, 31, 17, 17, 17, 0], //A
+</comment><comment id="K0helJR@JNvcp~XX}PMk" x="-19" y="1564" w="320" h="120">
+[30, 17, 17, 30, 17, 17, 30, 0],
+</comment><comment id="@dxbFS71FJ[B;,7,gAz?" x="346" y="1564" w="320" h="120">
+[14, 17, 16, 16, 16, 17, 14, 0],
+</comment><comment id="XbnHf;MUkqx%6M;5Hj/G" x="711" y="1564" w="350" h="120">
+[30, 17, 17, 17, 17, 17, 30, 0],//D
+</comment><comment id="KdnQK1@%TP-__*A`,}{O" x="-19" y="1729" w="320" h="120">
+[31, 16, 16, 30, 16, 16, 31, 0],
+</comment><comment id="FxXeaiIKS+VL~No|Kv:s" x="346" y="1729" w="320" h="120">
+[31, 16, 16, 30, 16, 16, 16, 0],
+</comment><comment id="].~zXL_~y$}q_NrG{{Vu" x="711" y="1729" w="320" h="120">
+[14, 17, 16, 23, 17, 17, 14, 0],
+</comment><comment id="-W5`W+W2n6mV`_iTHlci" x="-19" y="1894" w="320" h="120">
+[17, 17, 17, 31, 17, 17, 17, 0],
+</comment><comment id="jbGAk/C{88MH/k0C2zli" x="346" y="1894" w="270" h="120">
+[14, 4, 4, 4, 4, 4, 14, 0],
+</comment><comment id="WiSm]S5xyQiY|`(A;d2t" x="661" y="1894" w="280" h="120">
+[15, 2, 2, 2, 2, 18, 12, 0],
+</comment><comment id="pixc-#hL$zOflYTt{{jw" x="-19" y="2059" w="360" h="120">
+[17, 18, 20, 24, 20, 18, 17, 0], //K
+</comment><comment id="jbcp9~.:k6.@By:du-o1" x="386" y="2059" w="320" h="120">
+[16, 16, 16, 16, 16, 16, 31, 0],
+</comment><comment id="!pEN5a;3N[d9mr8yQ?d$" x="-19" y="2224" w="320" h="120">
+[17, 27, 21, 21, 17, 17, 17, 0],
+</comment><comment id="`mo:[?(3tsG?4[#g`GSp" x="346" y="2224" w="320" h="120">
+[17, 17, 25, 21, 19, 17, 17, 0],
+</comment><comment id="V?e;,Bb@[9)d^aa`s|G5" x="711" y="2224" w="320" h="120">
+[14, 17, 17, 17, 17, 17, 14, 0],
+</comment><comment id="E0]D9qP)4?^I)w_?@U0(" x="-19" y="2389" w="320" h="120">
+[30, 17, 17, 30, 16, 16, 16, 0],
+</comment><comment id="IjwVu19Lh0Umt8wgKvRm" x="346" y="2389" w="320" h="120">
+[14, 17, 17, 17, 21, 18, 13, 0],
+</comment><comment id="EW}Hr;Kp08wC,*eaiNPT" x="711" y="2389" w="320" h="120">
+[30, 17, 17, 30, 20, 18, 17, 0],
+</comment><comment id="m@+QQ(}zPuFCdcobWRSZ" x="-19" y="2554" w="310" h="120">
+[14, 17, 16, 14, 1, 17, 14, 0],
+</comment><comment id="j|9T2%%JgcET4s-lw-%k" x="336" y="2554" w="360" h="120">
+[31, 4, 4, 4, 4, 4, 4, 0],       //T
+</comment><comment id="/1Z7;(:Rywd,FnMX0mp(" x="741" y="2554" w="320" h="120">
+[17, 17, 17, 17, 17, 17, 14, 0],
+</comment><comment id="_iw?sWctl5+bUV^qx/kw" x="-19" y="2719" w="310" h="120">
+[17, 17, 17, 17, 17, 10, 4, 0],
+</comment><comment id="7{;Km|/v#yY#@vNl_,9s" x="336" y="2719" w="320" h="120">
+[17, 17, 17, 21, 21, 27, 17, 0],
+</comment><comment id="ZTQDOE{ZiocG6J%K10bt" x="701" y="2719" w="310" h="120">
+[17, 17, 10, 4, 10, 17, 17, 0],
+</comment><comment id="5^0{#YIxoT[q]0)]tBMJ" x="-19" y="2884" w="280" h="120">
+[17, 17, 10, 4, 4, 4, 4, 0],
+</comment><comment id="a]pt/YQ[c$`56tcWjiW8" x="306" y="2884" w="320" h="120">
+[31, 1, 2, 4, 8, 16, 31, 0], //Z
+</comment><comment id="7RVY5$GASI9orJh,LlJs" x="671" y="2884" w="350" h="120">
+[10, 0, 14, 17, 31, 17, 17, 0], //Ä
+</comment><comment id="N`Ps`zUaB2e647x1)q#@" x="-19" y="3049" w="350" h="120">
+[10, 0, 14, 17, 17, 17, 14, 0], //Ö
+</comment><comment id="$N=kjxMcYu5M)K{*nzm:" x="376" y="3049" w="350" h="120">
+[10, 0, 17, 17, 17, 17, 14, 0], //Ü
+</comment><comment id="zSCgGZEnYY@s/SB;)i/p" x="-19" y="3214" w="340" h="120">
+[10, 0, 14, 1, 15, 17, 15, 0], //ä
+</comment><comment id="*#p{tKtH=Iac{]ivb)x!" x="366" y="3214" w="340" h="120">
+[0, 10, 0, 14, 17, 17, 14, 0], //ö
+</comment><comment id="$l.^dK4n[6X+]g4RmsYV" x="-19" y="3379" w="340" h="120">
+[0, 10, 0, 17, 17, 17, 14, 0], //ü
+</comment><comment id="Ynk]!V#8.cf2c73r{r.a" x="366" y="3379" w="360" h="120">
+[14, 17, 19, 21, 25, 17, 14, 0], //0
+</comment><comment id="~UHo,ZP57hDE7lw(dquo" x="-19" y="3544" w="270" h="120">
+[4, 12, 4, 4, 4, 4, 14, 0],
+</comment><comment id="9K.x`9w{thP*]{M[pT$A" x="296" y="3544" w="280" h="120">
+[14, 17, 1, 2, 4, 8, 31, 0],
+</comment><comment id="0%{YVyc#)AaWtCRJ}%?#" x="621" y="3544" w="280" h="120">
+[31, 2, 4, 2, 1, 17, 14, 0],
+</comment><comment id="y~]EQP[,VgaCf4P;~${v" x="-19" y="3709" w="280" h="120">
+[2, 6, 10, 18, 31, 2, 2, 0],
+</comment><comment id="CQR(2=I]0!I5@md6sp*A" x="306" y="3709" w="300" h="120">
+[31, 16, 30, 1, 1, 17, 14, 0],
+</comment><comment id="W0xDQeAr_{ult?ofY$wP" x="651" y="3709" w="300" h="120">
+[6, 8, 16, 30, 17, 17, 14, 0],
+</comment><comment id="^0NjcKM8@GNB(6m[lX#h" x="-19" y="3874" w="260" h="120">
+[31, 1, 2, 4, 4, 4, 4, 0],
+</comment><comment id="odGz3/Cu9iIt]Lv]h!(9" x="286" y="3874" w="320" h="120">
+[14, 17, 17, 14, 17, 17, 14, 0],
+</comment><comment id="b:PF|iX33l$Oz*gf8DSY" x="651" y="3874" w="330" h="120">
+[14, 17, 17, 15, 1, 2, 12, 0],//9
+</comment><comment id="g1CSTGnY-V{I:Pn%Urrt" x="-19" y="4039" w="290" h="120">
+[4, 4, 4, 4, 4, 0, 4, 0], //!
+</comment><comment id="w!-R];G+/Ic`P,%ud[6S" x="316" y="4039" w="310" h="120">
+[14, 17, 1, 2, 4, 0, 4, 0], //?
+</comment><comment id="f(a`oEc/IuK(M=~B+lr(" x="671" y="4039" w="310" h="120">
+[0, 0, 0, 0, 0, 12, 12, 0], //.
+</comment><comment id="Ox-15*Gs(#QT6nEF~Zqw" x="-19" y="4204" w="310" h="120">
+[0, 0, 0, 0, 0, 12, 12, 4], //,
+</comment><comment id="{0!F@V[jTuY}BTd[trm)" x="336" y="4204" w="320" h="120">
+[0, 0, 4, 21, 14, 21, 4, 0], //*
+</comment><comment id="qC:_30Vh~L3O(F=n?6-j" x="701" y="4204" w="300" h="120">
+[0, 0, 4, 4, 31, 4, 4, 0], //+
+</comment><comment id="Vl9I+kd}hR-!i!y;Od7?" x="-19" y="4369" w="300" h="120">
+[0, 0, 0, 0, 31, 0, 0, 0], //-
+</comment><comment id="%Q83yJVyabBx8ANw,qTR" x="326" y="4369" w="310" h="120">
+[0, 0, 0, 31, 0, 31, 0, 0], //=
+</comment><comment id=",T;/3octlayEHda^Y9Wl" x="681" y="4369" w="310" h="120">
+[1, 2, 31, 4, 31, 8, 16, 0], //
+</comment><comment id="~;y;|6v,_}x7Olr[@L]R" x="-19" y="4534" w="330" h="120">
+[0, 0, 12, 12, 0, 12, 12, 0], //:
+</comment><comment id="m~)Y2N+uN3rq/})]Q5KJ" x="356" y="4534" w="320" h="120">
+[24, 25, 2, 4, 8, 19, 3, 0], //%
+</comment><comment id="P$|6pLc)Z@I[8`xc**s@" x="721" y="4534" w="320" h="120">
+[0, 0, 14, 1, 15, 17, 31, 0],//a
+</comment><comment id="9^CHSrC`YqSNeX4i@1WE" x="-19" y="4699" w="360" h="120">
+[16, 16, 22, 25, 17, 17, 14, 0], //b
+</comment><comment id="=zU1W5Iz#]lHB?FD^GcD" x="386" y="4699" w="340" h="120">
+[0, 0, 15, 16, 16, 16, 15, 0], //c
+</comment><comment id="56@U9m:]V?2V?`ybWuT-" x="-19" y="4864" w="340" h="120">
+[1, 1, 13, 19, 17, 17, 15, 0], //d
+</comment><comment id="LLz+q0;y:`(-N9onXOFa" x="366" y="4864" w="340" h="120">
+[0, 0, 14, 17, 31, 16, 14, 0], //e
+</comment><comment id="hIr@Zh}q%!bGSzK|k]P4" x="-19" y="5029" w="300" h="120">
+[2, 5, 4, 14, 4, 4, 4, 4], //f
+</comment><comment id="(fO/V^0:tR`R{ww?*J8d" x="326" y="5029" w="340" h="120">
+[0, 0, 15, 17, 17, 15, 1, 14], //g
+</comment><comment id="[AR-/`PG$C_eYs+kRY!K" x="711" y="5029" w="360" h="120">
+[16, 16, 22, 25, 17, 17, 17, 0], //h
+</comment><comment id="d$uhLc/1tbzU#q8g-yNs" x="-19" y="5194" w="310" h="120">
+[4, 0, 12, 4, 4, 4, 14, 0], //i
+</comment><comment id="bQr9`ydmr{RV/o`N115*" x="336" y="5194" w="300" h="120">
+[2, 0, 2, 2, 2, 2, 10, 4], //j
+</comment><comment id="ep|Oj4PM61$N`m%Hmpv0" x="681" y="5194" w="320" h="120">
+[8, 8, 9, 10, 12, 10, 9, 0], //k
+</comment><comment id="?{,VW~[cF5OT[uI#%]1k" x="-19" y="5359" w="310" h="120">
+[12, 4, 4, 4, 4, 4, 14, 0], //l
+</comment><comment id="{C1}Fh~lNK`v8$*$UfDa" x="336" y="5359" w="330" h="120">
+[0, 0, 26, 21, 21, 21, 21, 0],//m
+</comment><comment id="pxud5z+8hX9i*Ve~#.K|" x="711" y="5359" w="340" h="120">
+[0, 0, 22, 25, 17, 17, 17, 0], //n
+</comment><comment id="s1u3L_F1uL$l{xne`zlI" x="-19" y="5524" w="340" h="120">
+[0, 0, 14, 17, 17, 17, 14, 0], //o
+</comment><comment id="i(]ntT_y{N4+u%-ZW5?R" x="366" y="5524" w="350" h="120">
+[0, 0, 30, 17, 17, 30, 16, 16], //p
+</comment><comment id="CR4j^f8%,bhtt}*uwIoS" x="-19" y="5689" w="330" h="120">
+[0, 0, 15, 17, 17, 15, 1, 1], //q
+</comment><comment id="K$B=:H~#LI(FxMzB%D7r" x="356" y="5689" w="310" h="120">
+[0, 0, 11, 12, 8, 8, 8, 0], //r
+</comment><comment id="sq#ALDP/lA?KE{Lo~3fY" x="711" y="5689" w="330" h="120">
+[0, 0, 15, 16, 14, 1, 30, 0], //s
+</comment><comment id=";GuI;NpE0!KFK}kacnui" x="-19" y="5854" w="300" h="120">
+[4, 14, 4, 4, 4, 5, 2, 0], //t
+</comment><comment id="Kj)kg6XI*|*4MJQ*![#)" x="326" y="5854" w="340" h="120">
+[0, 0, 17, 17, 17, 19, 13, 0], //u
+</comment><comment id="Aj(-YKZP#}K7OUBT:e(c" x="711" y="5854" w="330" h="120">
+[0, 0, 17, 17, 17, 10, 4, 0], //v
+</comment><comment id="]Tr*Tk6Jv,oD)[eJs`U)" x="-19" y="6019" w="340" h="120">
+[0, 0, 17, 17, 17, 21, 10, 0], //w
+</comment><comment id="@c,hAO+zi=cF5.20_}I;" x="366" y="6019" w="330" h="120">
+[0, 0, 17, 10, 4, 10, 17, 0], //x
+</comment><comment id="dSH`5m/F}OiIzgWw/X.]" x="741" y="6019" w="310" h="120">
+[0, 0, 17, 9, 6, 4, 8, 16], //y
+</comment><comment id="/oShu[eJ5R3w]Ckq+]OM" x="-19" y="6184" w="310" h="120">
+[0, 0, 31, 2, 4, 8, 31, 0], //z
+</comment><comment id="gb!Y~g~SBmiJ2|pr+I5*" x="336" y="6184" w="330" h="120">
+[4, 8, 16, 16, 16, 8, 4, 0], //()
+</comment><comment id="gDg|sh{B$@M(]jKj+%x-" x="711" y="6184" w="290" h="120">
+[4, 2, 1, 1, 1, 2, 4, 0], //)
+</comment><comment id="6Ul!.1MHaC*:a]PoYF3," x="-19" y="6349" w="300" h="120">
+[2, 4, 8, 16, 8, 4, 2, 0], //&lt;
+</comment><comment id="tzD}imtvG~^}aMaG*#pk" x="326" y="6349" w="290" h="120">
+[8, 4, 2, 1, 2, 4, 8, 0], //&gt;
+</comment><comment id="/nTH.,+}PX{,]T?*K10b" x="661" y="6349" w="260" h="120">
+[6, 9, 28, 8, 28, 9, 6, 0]
+</comment><comment id="d$ua]rim.)W2Uxa:j}7R" x="-19" y="6514" w="160" h="120">
+]
+</comment><comment id="1SlN%cr5.M5P}r,=2WkU" x="186" y="6514" w="160" h="120">
+}
+</comment><comment id="s@3Ix0;/h+aT,7ZM,9]}" x="391" y="6514" w="160" h="120">
+}
+</comment><comment id="tAA$yAL(N$LzX-Su[u;+" x="596" y="6514" w="450" h="120">
+input.onButtonPressed(Button.A, function () {
+</comment><comment id="-Xa}@*[nRfkmbmmOsBg$" x="-19" y="6679" w="390" h="120">
+// power.fullPowerOn(FullPowerSource.A)
+</comment><comment id="Q6G=IlIEBEk#:]+.VahM" x="416" y="6679" w="480" h="120">
+strip_helligkeit = Math.min(strip_helligkeit + 25, 255);;
+</comment><comment id="ue:P4F+2.6x?x^*;k~s0" x="-19" y="6844" w="370" h="120">
+strip.setBrightness(strip_helligkeit)
+</comment><comment id="r8oCXS_U#[5yPUj~8MYm" x="396" y="6844" w="350" h="120">
+basic.showNumber(strip_helligkeit);
+</comment><comment id="I}|eQ]6PhfHya9A[s;+6" x="-19" y="7009" w="190" h="120">
+automat = !automat;
+</comment><comment id="8l6UccUG|#y(JonCFhR=" x="216" y="7009" w="160" h="120">
+})
+</comment><comment id="+D0kv7#0u`Jq#u)#w(^+" x="421" y="7009" w="450" h="120">
+input.onButtonPressed(Button.B, function () {
+</comment><comment id="quw_W!P%~b?l{Kgiud0@" x="-19" y="7174" w="480" h="120">
+strip_helligkeit = Math.max(strip_helligkeit - 25, 25);
+</comment><comment id=")+53|S)2a}KhZbf?BgRz" x="506" y="7174" w="370" h="120">
+strip.setBrightness(strip_helligkeit)
+</comment><comment id="+dL?*C57BjsukMaBZMI3" x="-19" y="7339" w="350" h="120">
+basic.showNumber(strip_helligkeit);
+</comment><comment id="DcX{7D1F@0Sb9+hpn5)|" x="376" y="7339" w="180" h="120">
+strip.rotate(-16);
+</comment><comment id="!+X|-KP]3V%~enO#4LQx" x="601" y="7339" w="160" h="120">
+strip.show();
+</comment><comment id="`LN!o8plAb%c0qOy1y3U" x="-19" y="7504" w="160" h="120">
+})
+</comment><comment id="%GHV3tekIeW{YY*Y0.:r" x="186" y="7504" w="460" h="120">
+input.onButtonPressed(Button.AB, function () {
+</comment><comment id="pV|R8bAXjDNCGi9r*|c%" x="691" y="7504" w="160" h="120">
+let s = 0
+</comment><comment id="7/{cdo83==tHA/Jn0yQ$" x="-19" y="7669" w="380" h="120">
+// for (let s=0;s&lt;neo_strip_anz;s++) {
+</comment><comment id=")$D4/wc6QIPE=i)#qsZu" x="406" y="7669" w="160" h="120">
+strip.clear()
+</comment><comment id="W:1t7Ejt?1HV},#se([g" x="611" y="7669" w="160" h="120">
+strip.show()
+</comment><comment id="}HN}s6]jC]Cvy#abtjHh" x="-19" y="7834" w="160" h="120">
+})
+</comment><comment id="JMCXnEz8PSz_z,T0V*E5" x="186" y="7834" w="220" h="120">
+function randColor() {
+</comment><comment id="(~1t)I)4iDjMff+(zTx|" x="451" y="7834" w="480" h="120">
+return [NeoPixelColors.Red, NeoPixelColors.Green, NeoPixelColors.Blue, NeoPixelColors.Yellow][Math.randomRange(0, 3)]
+</comment><comment id="MygnrO2P3hr`S56.cbZ0" x="-19" y="7999" w="160" h="120">
+}
+</comment><block type="device_forever" id="qYeeeuBbjDHtuVD;4YtQ" x="584" y="-31"><comment pinned="false" h="80" w="160">strip.rotate(8)
+strip.show()</comment><data>0</data><statement name="HANDLER"><block type="device_pause" id="z={MTsjtzh1MoMu;Ci=J"><value name="pause"><shadow type="timePicker" id=",fk;*2|8x_/0-?/_iOjp"><field name="ms">2000</field></shadow></value></block></statement></block><block type="pxt-on-start" id="N}Okva=%Ptn_R(u(Jm:|" x="0" y="0"><statement name="HANDLER"><block type="variables_set" id="Fup{N+9TEB}oh}]FJI]S"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field><value name="VALUE"><shadow type="math_number" id="%fLCH(~`rMok}3UtnOi#"><field name="NUM">0</field></shadow><block type="neopixel_create" id="9*1FB7Dj+IN|TlPG6{cz"><field name="pin">DigitalPin.P0</field><field name="mode">NeoPixelMode.RGB</field><value name="numleds"><shadow type="math_number" id="|8np$bId,]X{#Jowvzb_"><field name="NUM">64</field></shadow></value></block></value><next><block type="variables_set" id="P^2ev+jQGUp`G^2AzFgM"><field name="VAR" id="P.bv+:aw!@rbWr+p+E6h">automat</field><comment pinned="false" h="80" w="160">auch  scrollspeed</comment><value name="VALUE"><shadow type="math_number" id="N7Cw4wlP~)^q9ZlWrVE]"><field name="NUM">0</field></shadow><block type="logic_boolean" id="-#z5($,;ImtWPYg`8:]A"><field name="BOOL">FALSE</field></block></value><next><block type="variables_set" id="mKkZl+{FJq(HxO0Hx:%b"><field name="VAR" id="sr3Y={k_CYyvdijX]yKc">bst_reihe</field><value name="VALUE"><shadow type="math_number" id="#+Sq@z2DP/S!;{ljsB~:"><field name="NUM">0</field></shadow><block type="text" id="@@}]f!/K;)cDwyDDFULm"><field name="TEXT"></field></block></value><next><block type="basic_show_icon" id="vfInq,%fh1~3s$s3+).D"><field name="i">IconNames.SmallSquare</field><next><block type="variables_set" id="h]jqo*,_F#Nc2iA9.UhC"><field name="VAR" id="JwP}`q4v3qwgb:l:Y;X~">arr_tech_matrix</field><value name="VALUE"><shadow type="math_number" id="^A^Uscq;3.g/eQ!XC=g:"><field name="NUM">0</field></shadow><block type="lists_create_with" id="$4V*?]W4W4)uI6K7|NYu"><mutation items="2" horizontalafter="3"></mutation><value name="ADD0"><shadow type="math_number" id="dprxG~;l}sh:a6iEw%aB"><field name="NUM">8</field></shadow></value><value name="ADD1"><shadow type="math_number" id="vsa^qj,tOdi0f)1oW@8@"><field name="NUM">8</field></shadow></value></block></value><next><block type="variables_set" id="8n2owG?hBVbfO!yUJW!O"><field name="VAR" id="ekjZSgkSaX0ez[jjy9YV">strip_helligkeit</field><value name="VALUE"><shadow type="math_number" id="S:b:;W/Of!ct+Tgpr=HZ"><field name="NUM">25</field></shadow></value><next><block type="variables_set" id="at%nUkYMK#ob[Z{B:fPd"><field name="VAR" id="_.^[|GxNexxqtoc4U(K@">strip_pause</field><value name="VALUE"><shadow type="math_number" id="%,(#?I{TtjN=Hq/0|z~7"><field name="NUM">250</field></shadow></value><next><block type="neopixel_set_strip_color" id=";eNP(zF$z601z_0-B0#2"><data>1</data><value name="strip"><block type="variables_get" id="oIKcVTvYI^F:0``j7w*j"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field></block></value><value name="rgb"><shadow type="neopixel_colors" id="2FQ`mgCf/p6zeMie=Coi"><field name="color">NeoPixelColors.Green</field></shadow></value><next><block type="neopixel_show" id="2]o:E%#pH/VNaI#)00dM"><value name="strip"><block type="variables_get" id="|EB52Xi#Bn%1Bw*xgM]4"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="function_definition" id="TTj~37WU[=V/Zus;(1]K" x="36" y="586"><mutation name="set_helligkeit" functionid="$_Ogl^!wQRFz0sf1G;f-"><arg name="helligkeit" id="swnnogov19xup2io522l" type="number"></arg></mutation><field name="function_name">set_helligkeit</field><value name="swnnogov19xup2io522l"><block type="argument_reporter_number" id="ink@Uld=B/:t[W83~e$*"><mutation duplicateondrag="true"></mutation><field name="VALUE">helligkeit</field></block></value><statement name="STACK"><block type="variables_set" id="FGKRsJ_W#tSy(lh;ckDc"><field name="VAR" id="ekjZSgkSaX0ez[jjy9YV">strip_helligkeit</field><value name="VALUE"><shadow type="math_number" id="r=Mf?[Z`-R90]n_Mj)8x"><field name="NUM">0</field></shadow><block type="argument_reporter_number" id="JX}i6G0gV`VNw)KEcTws"><field name="VALUE">helligkeit</field></block></value><next><block type="neopixel_set_brightness" id="v!5lz%=yLs={1:s4u3{,"><comment pinned="false" h="80" w="160">console.log("helligkeit"+strip_helligkeit)</comment><value name="strip"><block type="variables_get" id="6t{L{|@P@7$]2Uw;4y1v"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field></block></value><value name="brightness"><block type="variables_get" id="!M`6@lyg$RD$?J1sjlgp"><field name="VAR" id="ekjZSgkSaX0ez[jjy9YV">strip_helligkeit</field></block></value></block></next></block></statement></block><block type="function_definition" id="UvUov*TC$*ZshT[`f$K=" x="527" y="636"><mutation name="init_strip" functionid="D:]ghBr+z(t4!~!F7J8)"></mutation><field name="function_name">init_strip</field><comment pinned="false" h="80" w="160">strip.show()</comment><statement name="STACK"><block type="variables_set" id="CzPeLVwS_*mkNbkl4a#K"><field name="VAR" id="@_/jI@hXrUgBDnpDj?Aj">pixelAnzahl</field><value name="VALUE"><shadow type="math_number" id="yT33*SOyWrM/L8h}r3~Y"><field name="NUM">0</field></shadow><block type="math_arithmetic" id="QGqk^y!U_8VQ,Ae~gb^9"><field name="OP">MULTIPLY</field><value name="A"><shadow type="math_number" id="0gMe4V`;2c,o~votprF6"><field name="NUM">0</field></shadow><block type="lists_index_get" id=";:||U*.2wk*jJnPebh`C"><value name="LIST"><block type="variables_get" id="IVVT=xWD8#p;#XSWjH!p"><field name="VAR" id="JwP}`q4v3qwgb:l:Y;X~">arr_tech_matrix</field></block></value><value name="INDEX"><shadow type="math_number" id=":pWa}Wz;n9$`]v8=w{I]"><field name="NUM">0</field></shadow></value></block></value><value name="B"><shadow type="math_number" id="7bJYn#X1gk]gpt[^zHsA"><field name="NUM">0</field></shadow><block type="lists_index_get" id="mkovTu`ds/)AeZUl6M]?"><value name="LIST"><block type="variables_get" id="F4QI0K6q{^rska6`(8cw"><field name="VAR" id="JwP}`q4v3qwgb:l:Y;X~">arr_tech_matrix</field></block></value><value name="INDEX"><shadow type="math_number" id="RECoF-joIox:]3_a6lQ9"><field name="NUM">1</field></shadow></value></block></value></block></value><next><block type="typescript_statement" id=":7]+u64n((ncXG:ev,bX"><mutation xmlns="http://www.w3.org/1999/xhtml" line0="strip = neopixel.create(0, pixelAnzahl, NeoPixelMode.RGB)" numlines="1"></mutation><next><block type="neopixel_set_brightness" id="S{5muW?C{$B)ACFz7$$+"><value name="strip"><block type="variables_get" id="t(G4sg}bE-~:(VHTmfie"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field></block></value><value name="brightness"><block type="variables_get" id="r+st={${,H}xlIXm1_]X"><field name="VAR" id="ekjZSgkSaX0ez[jjy9YV">strip_helligkeit</field></block></value><next><block type="neopixel_clear" id="YW:kv5KaHU!.sljc`6+D"><value name="strip"><block type="variables_get" id="w(g5/D67d=Qk-d{fr+2T"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field></block></value></block></next></block></next></block></next></block></statement></block><block type="function_definition" id=".-/k~+,dwKV.J6_otUbY" x="-19" y="991"><mutation name="loesche_matrix" functionid="yz-Henh6jKY]AZw!-mk`"></mutation><field name="function_name">loesche_matrix</field><statement name="STACK"><block type="neopixel_clear" id="Si!9o}?mURM`V2o%:wb%"><value name="strip"><block type="variables_get" id="Hw+cGsCW|=m`k[J6E7]c"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field></block></value><next><block type="neopixel_show" id="FRhPAV]bXle+GsRE=w@@"><value name="strip"><block type="variables_get" id="hvk{y1b4-)E]H}JNDQeB"><field name="VAR" id="COT(0TTdw4XS!RwJi;K8">strip</field></block></value></block></next></block></statement></block></xml>
